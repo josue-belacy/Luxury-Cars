@@ -5,16 +5,43 @@ let init = () => {
   links = document.getElementsByClassName('jumbo-slider__link'),
   current = 1,
   time = 6000;
+}
 
   //add animation class to slide
   slides[0].classList.add('jumbo-slider__slide--active');
-  links[current-1`].classList.add('jumbo-slider__link--active');
+  links[current-1`].classList.add
+  ('jumbo-slider__link--active');
 
   //update elipsis and links
-  let updateNav = () => {
-    console.log(`current: ${current}`)
+  let updateNav = (current) => {
+    console.log(`update current: ${current}`)
+    for (let index=0; index < array.length; index++) {
+      links[index].classList.remove('jumbo-slider__link--active');
+      circles[index].classList.remove('jumbo-slider__circle--filled);
+    }
+    links[current-1].classList.add('jumbo-slider__link--active');
+    circles[current-1].classList.add('jumbo-slider__circle--filled');
   }
-  updateNav();
+let startSliding = () => {
+  
+  setInterval(() => {
+    console.log(`current: ${current}`)slides[1].classList.add
+    ('jumbo-slider__slide--active`)
+    slides[0].classList.remove('jumbo-slider__slide--active')
+    
+    if (current < slides.length) {
+      current++
+      // updateNav(current)
+    } else {
+      current = 1
+    }
+// sliding happens here
+    container.appendChild(slides[0] cloneNode([true]));
+    container.removeChild(slides[0]);
+
+  }, 6000);
+}
+  startSliding();
 }
 
 init();
