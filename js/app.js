@@ -5,19 +5,18 @@ let init = () => {
   links = document.getElementsByClassName('jumbo-slider__link'),
   current = 1,
   time = 6000;
-}
 
   //add animation class to slide
   slides[0].classList.add('jumbo-slider__slide--active');
-  links[current-1`].classList.add
-  ('jumbo-slider__link--active');
+  links[current].classList.add('jumbo-slider__link--active');
+  circles[current].classList.add('jumbo-slider__circle--filled');
 
   //update elipsis and links
   let updateNav = (current) => {
     console.log(`update current: ${current}`)
     for (let index=0; index < array.length; index++) {
       links[index].classList.remove('jumbo-slider__link--active');
-      circles[index].classList.remove('jumbo-slider__circle--filled);
+      circles[index].classList.remove('jumbo-slider__circle--filled');
     }
     links[current-1].classList.add('jumbo-slider__link--active');
     circles[current-1].classList.add('jumbo-slider__circle--filled');
@@ -25,23 +24,31 @@ let init = () => {
 let startSliding = () => {
   
   setInterval(() => {
-    console.log(`current: ${current}`)slides[1].classList.add
-    ('jumbo-slider__slide--active`)
+    //console.log('current : ${current}')
+
+    //remove active class from first and add it to the 2nd slide so it can become the 1st slide with the class activated
+    slides[1].classList.add('jumbo-slider__slide--active')
     slides[0].classList.remove('jumbo-slider__slide--active')
+    //clone the first slide and place on the last space.
+
+    container.appendChild(slides[0].cloneNode([true]));
+    // then remove the first slide after it has been cloned
+    container.removeChild(slides[0]);
     
+    //console.log(`slides: ${slides.length}`)
+
     if (current < slides.length) {
       current++
-      // updateNav(current)
+      updateNav(current)
     } else {
       current = 1
+      updateNav(current)
     }
-// sliding happens here
-    container.appendChild(slides[0] cloneNode([true]));
-    container.removeChild(slides[0]);
+    
 
-  }, 6000);
+  }, time);
 }
-  startSliding();
+startSliding();
 }
 
 init();
