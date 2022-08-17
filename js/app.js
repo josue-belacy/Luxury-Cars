@@ -9,12 +9,12 @@ let init = () => {
   //add animation class to slide
   slides[0].classList.add('jumbo-slider__slide--active');
   links[current].classList.add('jumbo-slider__link--active');
-  circles[current].classList.add('jumbo-slider__circle--filled');
+  // circles[current].classList.add('jumbo-slider__circle--filled');
 
   //update elipsis and links
   let updateNav = (current) => {
     console.log(`update current: ${current}`)
-    for (let index=0; index < array.length; index++) {
+    for (let index=0; index < slides.length; index++) {
       links[index].classList.remove('jumbo-slider__link--active');
       circles[index].classList.remove('jumbo-slider__circle--filled');
     }
@@ -24,7 +24,6 @@ let init = () => {
 let startSliding = () => {
   
   setInterval(() => {
-    //console.log('current : ${current}')
 
     //remove active class from first and add it to the 2nd slide so it can become the 1st slide with the class activated
     slides[1].classList.add('jumbo-slider__slide--active')
@@ -35,8 +34,6 @@ let startSliding = () => {
     // then remove the first slide after it has been cloned
     container.removeChild(slides[0]);
     
-    //console.log(`slides: ${slides.length}`)
-
     if (current < slides.length) {
       current++
       updateNav(current)
